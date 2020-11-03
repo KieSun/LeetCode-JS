@@ -19,14 +19,13 @@ var rotateRight = function(head, k) {
         length++
         fast = fast.next
     }
-    fast.next = head
     let step = length - k % length
-    let temp = slow.next
+    fast.next = head
     while (step > 1) {
-        slow = slow.next
         step--
+        slow = slow.next
     }
-    temp = slow.next
+    let temp = slow.next
     slow.next = null
     return temp
 };
