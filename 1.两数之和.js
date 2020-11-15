@@ -11,17 +11,14 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    let res 
-    for (let i = 0; i < nums.length - 1; i++) {
-        for (let j = i + 1; j < nums.length;j ++) {
-            const remain = target - nums[i]
-            if (remain === nums[j]) {
-                res = [i, j]
-                break
-            }
+    let map = {}
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i]
+        if (num in map) {
+            return [map[num], i]
         }
+        map[target - num] = i
     }
-    return res
 };
 // @lc code=end
 
