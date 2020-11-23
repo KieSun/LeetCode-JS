@@ -9,23 +9,22 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var isPalindrome = function (head) {
-  let fast, slow;
-  let node, pre;
-  fast = slow = head;
-  pre = null;
-  while (fast && fast.next) {
-    node = slow;
-    slow = slow.next;
-    fast = fast.next.next;
-    node.next = pre;
-    pre = node;
+var isPalindrome = function(head) {
+  let length = 0
+  for (let p = head; p !== null; p = p.next) {
+      length++
   }
-  if (fast) slow = slow.next;
-  while (node) {
-    if (node.val !== slow.val) return false;
-    node = node.next;
-    slow = slow.next;
+  let current = head
+  let pre = null
+  for (let i = 0; i < Math.floor(length / 2); i++) {
+      let temp = current.next
+      current.next = pre
+      pre = current
+      current = temp
   }
-  return true;
+  if (length % 2 === 1 && current) current = current.next
+  for (; pre !== null && current !== null; pre = pre.next, current = current.next) {
+      if (pre.val !== current.val) return false
+  }
+  return true
 };
