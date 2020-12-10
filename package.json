@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@types/shelljs": "^0.8.8"
+  }
+}
